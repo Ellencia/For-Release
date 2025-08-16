@@ -143,39 +143,50 @@
         .chord-diagram-container .chord-selection {
             flex: 1;
         }
+        .chord-diagram,
+        #chord-photo-container {
+            /* 공통 스타일 (모바일 기본) */
+            flex: 1 1 100%;
+            max-width: 200px; /* 모바일 크기 200px */
+            min-width: 200px;
+            margin: 0 auto; /* 가운데 정렬 */
+        }
         .chord-diagram {
+            /* 다이어그램 고유 스타일 */
             background-color: transparent;
             padding: 0;
             border-radius: 0;
             border: none;
             aspect-ratio: 1 / 1;
-            /* 크기를 180px로 통일하고, 반응성 확보 */
-            flex: 1 1 150px; 
-            max-width: 180px;
-            min-width: 180px; /* 최소 너비 보장 */
-            margin: 0;
+        }
+        #chord-photo-container {
+            /* 사진 컨테이너 고유 스타일 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .chord-info {
             display: flex;
-            flex-direction: row;
+            flex-direction: row; /* 모바일 기본: 수평 정렬 */
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            flex-wrap: wrap; /* 공간이 부족하면 요소들이 다음 줄로 넘어감 */
+            flex-wrap: wrap; /* 공간 부족 시 줄바꿈 (모바일용) */
         }
-        #chord-photo-container {
-            /* 크기를 150px로 통일하고, 반응성 확보 */
-            flex: 1 1 150px;
-            max-width: 150px;
-            min-width: 150px; /* 최소 너비 보장 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        /* PC버전 (768px 이상) */
+        @media (min-width: 768px) {
+            .chord-info {
+                flex-direction: column; /* PC: 수직 정렬 */
+            }
+            .chord-diagram,
+            #chord-photo-container {
+                max-width: 500px; /* PC 크기 500px */
+            }
         }
         #chord-photo-container img {
-            width: 100%;
-            max-width: 150px; /* 크기 통일 */
-            max-height: 150px; /* 크기 통일 */
+            width: 100%; /* 컨테이너 너비에 맞춤 */
+            height: auto; /* 높이는 비율에 맞게 자동 조절 */
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             object-fit: contain;
