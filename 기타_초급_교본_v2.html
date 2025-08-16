@@ -142,6 +142,10 @@
                 flex-direction: column; /* PC에서는 수직으로 쌓기 */
                 align-items: center; /* 수직으로 쌓을 때 가운데 정렬 */
             }
+            #chord-photo-container {
+                /* 향후 PC 전용 크기를 지정할 수 있도록 구조만 생성 */
+                max-width: 300px;
+            }
         }
                 .chord-diagram-container .chord-info,
         .chord-diagram-container .chord-selection {
@@ -156,12 +160,22 @@
             aspect-ratio: 1 / 1;
             margin: 0 auto;
         }
-        #chord-photo-container {
-            /* JS가 크기를 제어. 사진 컨테이너 고유 스타일만 남김 */
+                #chord-photo-container {
+            /* 모바일 기본 크기 */
+            max-width: 200px;
+            /* 크기를 150px로 통일하고, 반응성 확보 */
+            flex: 1 1 150px;
+            min-width: 150px; /* 최소 너비 보장 */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            #chord-photo-container {
+                /* PC 크기 */
+                max-width: 300px;
+            }
         }
         .chord-info {
             display: flex;
@@ -180,9 +194,8 @@
             /* 크기는 JS에서 제어하므로 CSS 규칙 불필요 */
         }
         #chord-photo-container img {
-            width: 100%;
-            max-width: 150px; /* 크기 통일 */
-            max-height: 150px; /* 크기 통일 */
+            width: 100%; /* 부모 컨테이너 너비에 100% 맞춤 */
+            height: auto; /* 높이는 비율에 맞게 자동 조절 */
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             object-fit: contain;
