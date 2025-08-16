@@ -464,12 +464,12 @@
 const chordsData = {
     open: [
         { name: 'C', positions: [[2, 1, 1], [4, 2, 2], [5, 3, 3]], open: [1, 3], close: [6], photo: 'https://github.com/Ellencia/Images/blob/main/C%201.jpg?raw=true' },
-        { name: 'D', positions: [[1, 2, 2], [2, 3, 3], [3, 2, 1]], open: [4], photo: 'https://github.com/Ellencia/Images/blob/main/chord_D.jpg?raw=true' },
-        { name: 'E', positions: [[3, 1, 1], [5, 2, 2], [4, 2, 3]], open: [1, 2, 6], photo: 'https://github.com/Ellencia/Images/blob/main/chord_E.jpg?raw=true' },
-        { name: 'G', positions: [[5, 2, 2], [6, 3, 3], [1, 3, 4]], open: [2, 3, 4], photo: 'https://github.com/Ellencia/Images/blob/main/chord_G.jpg?raw=true' },
-        { name: 'A', positions: [[4, 2, 1], [3, 2, 2], [2, 2, 3]], open: [1, 5], photo: 'https://github.com/Ellencia/Images/blob/main/chord_A.jpg?raw=true' },
+        { name: 'D', positions: [[1, 2, 2], [2, 3, 3], [3, 2, 1]], open: [4], photo: 'https://github.com/Ellencia/Images/blob/main/D%201.jpg?raw=true' },
+        { name: 'E', positions: [[3, 1, 1], [5, 2, 2], [4, 2, 3]], open: [1, 2, 6], photo: 'https://github.com/Ellencia/Images/blob/main/Em.jpg?raw=true' },
+        { name: 'G', positions: [[5, 2, 2], [6, 3, 3], [1, 3, 4]], open: [2, 3, 4], photo: 'https://github.com/Ellencia/Images/blob/main/G.jpg?raw=true' },
+        { name: 'A', positions: [[4, 2, 1], [3, 2, 2], [2, 2, 3]], open: [1, 5], photo: 'https://github.com/Ellencia/Images/blob/main/A.jpg?raw=true' },
         { name: 'Dm', positions: [[1, 1, 1], [2, 3, 3], [3, 2, 2]], open: [4], photo: 'https://github.com/Ellencia/Images/blob/main/chord_Dm.jpg?raw=true' },
-        { name: 'Em', positions: [[4, 2, 2], [5, 2, 3]], open: [1, 2, 3, 6], photo: 'https://github.com/Ellencia/Images/blob/main/chord_Em.jpg?raw=true' },
+        { name: 'Em', positions: [[4, 2, 2], [5, 2, 3]], open: [1, 2, 3, 6], photo: 'https://github.com/Ellencia/Images/blob/main/Em.jpg?raw=true' },
         { name: 'Am', positions: [[2, 1, 1], [3, 2, 3], [4, 2, 2]], open: [1, 5], photo: 'https://github.com/Ellencia/Images/blob/main/chord_Am.jpg?raw=true' },
         { name: 'C7', positions: [[2, 1, 1], [4, 2, 2], [5, 3, 3], [3, 3, 4]], open: [1], close: [6], photo: 'https://github.com/Ellencia/Images/blob/main/chord_C7.jpg?raw=true' },
         { name: 'D7', positions: [[1, 2, 3], [2, 1, 1], [3, 2, 2]], open: [4], close: [5, 6], photo: 'https://github.com/Ellencia/Images/blob/main/chord_D7.jpg?raw=true' },
@@ -478,10 +478,10 @@ const chordsData = {
         { name: 'A7', positions: [[2, 2, 2], [4, 2, 1]], open: [1, 3, 5], close: [6], photo: 'https://github.com/Ellencia/Images/blob/main/chord_A7.jpg?raw=true' }
     ],
     barre: [
-        { name: 'F', barre: 1, positions: [[3, 2, 2], [5, 3, 3], [4, 3, 4]], photo: 'https://github.com/Ellencia/Images/blob/main/chord_F.jpg?raw=true' },
-        { name: 'B', barre: 2, positions: [[2, 4, 4], [3, 4, 3], [4, 4, 2]], rootString: 5, photo: 'https://github.com/Ellencia/Images/blob/main/chord_B.jpg?raw=true' },
-        { name: 'Bm', barre: 2, positions: [[2, 3, 2], [3, 4, 4], [4, 4, 3]], rootString: 5, photo: 'https://github.com/Ellencia/Images/blob/main/chord_Bm.jpg?raw=true' },
-        { name: 'F#m', barre: 2, positions: [[5, 4, 2], [4, 4, 3]], photo: 'https://github.com/Ellencia/Images/blob/main/chord_Fm.jpg?raw=true' },
+        { name: 'F', barre: 1, positions: [[3, 2, 2], [5, 3, 3], [4, 3, 4]], photo: 'https://github.com/Ellencia/Images/blob/main/F.jpg?raw=true' },
+        { name: 'B', barre: 2, positions: [[2, 4, 4], [3, 4, 3], [4, 4, 2]], rootString: 5, photo: 'https://github.com/Ellencia/Images/blob/main/B.jpg?raw=true' },
+        { name: 'Bm', barre: 2, positions: [[2, 3, 2], [3, 4, 4], [4, 4, 3]], rootString: 5, photo: 'https://github.com/Ellencia/Images/blob/main/Bm.jpg?raw=true' },
+        { name: 'F#m', barre: 2, positions: [[5, 4, 2], [4, 4, 3]], photo: 'https://github.com/Ellencia/Images/blob/main/Fm.jpg?raw=true' },
     ]
 };
 
@@ -633,6 +633,7 @@ function createChordButtons() {
         button.addEventListener('click', () => {
             if (activeChordButton) activeChordButton.classList.remove('active');
             drawChordDiagram(chord);
+            showChordPhoto(chord); // 사진 표시 함수 호출 추가
             button.classList.add('active');
             activeChordButton = button;
         });
